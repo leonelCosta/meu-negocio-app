@@ -44,14 +44,14 @@ class _LoginAndCadastroPageState extends State<LoginAndCadastroPage> {
   Container _buildContainerTabs() {
     return Container(
       height:
-          430.0, //! Altura de todo Container aonde são adicionados os BTN, TEXT FIELD...
+          490.0, //! Altura de todo Container aonde são adicionados os BTN, TEXT FIELD...
       width: double.infinity,
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
               appBar: AppBar(
                 backgroundColor: kColorBackgroundLogin,
-                elevation: 0.0, // retira a sombra da tab
+                elevation: 0.0, //? retira e add a sombra da tab
                 bottom: TabBar(
                   indicatorColor: Colors.amber,
                   labelColor: Colors.amber,
@@ -81,15 +81,7 @@ class _LoginAndCadastroPageState extends State<LoginAndCadastroPage> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                      child: TextField(
-                        onChanged: (value) {
-                          debugPrint('Something changed in Title Text Field');
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Nome de Usuario',
-                          hintText: 'Digite o Nome',
-                        ),
-                      ),
+                      child: _buildFormCadastro(),
                     )
                   ],
                 ),
@@ -111,7 +103,8 @@ class _LoginAndCadastroPageState extends State<LoginAndCadastroPage> {
 //! Construção dos Componentes De Formulario
   Column _buildFormLogin() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment
+          .start, //? POsicionamento do Conteudo dentro da coluna
       children: <Widget>[
         TextField(
           onChanged: (value) {
@@ -155,6 +148,78 @@ class _LoginAndCadastroPageState extends State<LoginAndCadastroPage> {
             color: Colors.amber,
             child: Text(
               'ENTRAR',
+              style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 2.0,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans'),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+//! Construção dos Componentes De Formulario de Cadastro
+  Column _buildFormCadastro() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment
+          .start, //? POsicionamento do Conteudo dentro da coluna
+      children: <Widget>[
+        TextField(
+          onChanged: (value) {
+            debugPrint('Something changed in Title Text Field');
+          },
+          decoration: InputDecoration(
+            labelText: 'Nome',
+            hintText: 'Digite o Nome',
+            prefixIcon: Icon(
+              Icons.person_outline,
+              color: Colors.black45,
+            ),
+          ),
+        ),
+        TextField(
+          onChanged: (value) {
+            debugPrint('Something changed in Title Text Field');
+          },
+          decoration: InputDecoration(
+            labelText: 'Senha',
+            hintText: 'Digite o Senha',
+            prefixIcon: Icon(
+              Icons.lock_outline,
+              color: Colors.black45,
+            ),
+          ),
+        ),
+        TextField(
+          onChanged: (value) {
+            debugPrint('Something changed in Title Text Field');
+          },
+          decoration: InputDecoration(
+            labelText: 'Telefone',
+            hintText: 'Digite o Telefone',
+            prefixIcon: Icon(
+              Icons.phone_android,
+              color: Colors.black45,
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+        Container(
+          width: double.infinity,
+          child: RaisedButton(
+            elevation: 3.0,
+            onPressed: () => print('Cadastro Button'),
+            padding: EdgeInsets.all(15.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            color: Colors.amber,
+            child: Text(
+              'CADASTRAR',
               style: TextStyle(
                   color: Colors.white,
                   letterSpacing: 2.0,
